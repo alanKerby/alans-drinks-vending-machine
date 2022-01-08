@@ -52,7 +52,7 @@ public class DrinkServiceUnitTest {
     }
 
     @Test
-    public void updateByID() {
+    public void updateByIDTEst() {
         long longInput = 1L;
         Drink drinkWithChanges = new Drink(1L, "Updated Odd Coffee", 30, 30, 8, 20, false, true, 20);
         Drink drinkToUpdate = new Drink(1L, "Odd Coffee", 30, 30, 8, 20, false, true, 20);
@@ -61,6 +61,16 @@ public class DrinkServiceUnitTest {
         Assertions.assertEquals(drinkWithChanges, this.drinkService.updateByID(longInput, drinkWithChanges));
         Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(longInput);
         Mockito.verify(this.drinkRepo, Mockito.times(1)).saveAndFlush(drinkWithChanges);
+    }
+
+    @Test
+    public void updateByIDNullTEst() {
+        long longInput = 1L;
+        Drink drinkWithChanges = new Drink(1L, "Updated Odd Coffee", 30, 30, 8, 20, false, true, 20);
+        Mockito.when(this.drinkRepo.findById(longInput)).thenReturn(java.util.Optional.empty());
+        Assertions.assertNull(this.drinkService.updateByID(longInput, drinkWithChanges));
+        Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(longInput);
+
     }
 
     @Test
