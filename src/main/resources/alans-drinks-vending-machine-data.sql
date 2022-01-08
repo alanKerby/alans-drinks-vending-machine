@@ -1,0 +1,2 @@
+INSERT INTO DRINK(coffee_beans_grams, frothed_milk, hot_milk, hot_waterml, ice_water_ml, milkml, name, sugar_syrup_ml) VALUES (8, true, false, 60, 0, 30, 'H2 wakeup coffee', 6)
+INSERT INTO DRINK(coffee_beans_grams, frothed_milk, hot_milk, hot_waterml, ice_water_ml, milkml, name, sugar_syrup_ml) VALUES (8, true, false, 60, 0, 30, 'H2 wakeup coffee again', 6)
