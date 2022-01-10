@@ -32,19 +32,26 @@ public class DrinkController {
 
     //read drink by id
     @GetMapping("read-drink-by-id/{id}")
-    public ResponseEntity<Drink> findDrinkByID(@PathVariable Long id) {
+    public ResponseEntity<Drink> readDrinkByID(@PathVariable Long id) {
         return new ResponseEntity<>(drinkService.readByID(id), HttpStatus.FOUND);
+    }
+
+    //read by name
+    @GetMapping("/read-by-name/{name}")
+    public ResponseEntity<Drink> readDrinkByName(@PathVariable String name) {
+        return new ResponseEntity<>(this.drinkService.readByName(name),
+                HttpStatus.OK);
     }
 
     //update a drink
     @PutMapping("update-drink-by-id/{id}")
-    public ResponseEntity<Drink> updateSingleDrink(@PathVariable Long id, @RequestBody Drink drink) {
+    public ResponseEntity<Drink> updateDrinkByID(@PathVariable Long id, @RequestBody Drink drink) {
         return new ResponseEntity<>(drinkService.updateByID(id, drink), HttpStatus.ACCEPTED);
     }
 
     //delete drink by id
     @DeleteMapping("delete-drink-by-id/{id}")
-    public ResponseEntity<Boolean> deleteSingleDrink(@PathVariable Long id) {
+    public ResponseEntity<Boolean> deleteDrinkByID(@PathVariable Long id) {
         return new ResponseEntity<>(drinkService.deleteByID(id), HttpStatus.ACCEPTED);
     }
 }

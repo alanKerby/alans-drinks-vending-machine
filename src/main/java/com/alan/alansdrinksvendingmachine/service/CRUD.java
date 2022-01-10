@@ -13,6 +13,9 @@ public interface CRUD<T> {
     //read by id
     T readByID(long id);
 
+//    //read by name
+//    T readByName(String name);
+
     //update by id
     T updateByID(long id, T t);
 
