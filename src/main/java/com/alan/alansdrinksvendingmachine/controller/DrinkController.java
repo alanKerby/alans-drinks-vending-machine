@@ -36,6 +36,13 @@ public class DrinkController {
         return new ResponseEntity<>(drinkService.readByID(id), HttpStatus.FOUND);
     }
 
+    //read by name
+    @GetMapping("/read-by-name/{name}")
+    public ResponseEntity<Drink> readDrinkByName(@PathVariable String name) {
+        return new ResponseEntity<>(this.drinkService.readByName(name),
+                HttpStatus.OK);
+    }
+
     //update a drink
     @PutMapping("update-drink-by-id/{id}")
     public ResponseEntity<Drink> updateSingleDrink(@PathVariable Long id, @RequestBody Drink drink) {
