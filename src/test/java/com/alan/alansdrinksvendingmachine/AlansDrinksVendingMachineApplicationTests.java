@@ -10,4 +10,5 @@ class AlansDrinksVendingMachineApplicationTests {
     void contextLoads() {
     }
 
+
 }
