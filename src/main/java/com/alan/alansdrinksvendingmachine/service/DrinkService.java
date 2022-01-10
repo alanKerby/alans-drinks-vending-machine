@@ -1,6 +1,7 @@
 package com.alan.alansdrinksvendingmachine.service;
 
 import com.alan.alansdrinksvendingmachine.domain.Drink;
+import com.alan.alansdrinksvendingmachine.exception.NoSuchIDException;
 import com.alan.alansdrinksvendingmachine.repo.DrinkRepo;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,11 @@ public class DrinkService implements CRUD<Drink> {
         return optionalDrink.orElse(null);
     }
 
+    public Drink readByName(String name) {
+        Optional<Drink> optionalDrink = Optional.ofNullable(this.repo.findDrinkByName(name));
+        return optionalDrink.orElse(null);
+    }
+
     @Override
     public Drink updateByID(long id, Drink drink) {
         Optional<Drink> optionalDrink = this.repo.findById(id);
@@ -52,8 +58,11 @@ public class DrinkService implements CRUD<Drink> {
 
     @Override
     public boolean deleteByID(long id) {
-        this.repo.deleteById(id);
-        return !this.repo.existsById(id);
-    }
+        Optional<Drink> optionalDrink = this.repo.findById(id);
+        if (optionalDrink.isPresent()) {
+            this.repo.deleteById(id);
+            return !this.repo.existsById(id);
+        } else throw new NoSuchIDException("ID does not exist, please select an ID from the database");
 
+    }
 }
