@@ -56,6 +56,7 @@ Contact alankerby@gmail.com to request access.
 Please note the sprints do not appear on the board as they have been completed. See the “Roadmap” page to view epic/feature issues/user stories.
 
 ##Testing Coverage Report
+Please note testing for read by name and the custom exception for delete by ID are not included in the report
 ![](readme-images/overall-test-coverage.png)
 ###Main
 ![](readme-images/main-test-coverage.png)
